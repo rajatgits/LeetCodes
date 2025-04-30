@@ -4,14 +4,13 @@ class Solution {
             return false;
         }
 
-        int[] hashArray = new int[26];
-
-        for(int i=0; i<s.length(); i++) {
-            hashArray[s.charAt(i) - 'a']++;
-            hashArray[t.charAt(i) - 'a']--;
+        int[] hash = new int[26];
+        for(int i = 0; i < s.length(); i++) {
+            hash[s.charAt(i) - 'a']++;
+            hash[t.charAt(i) - 'a']--;
         }
 
-        for(int num : hashArray) {
+        for(int num : hash) {
             if(num != 0) {
                 return false;
             }
