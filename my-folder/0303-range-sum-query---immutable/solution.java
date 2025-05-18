@@ -1,9 +1,8 @@
 class NumArray {
     int[] nums;
-
     public NumArray(int[] nums) {
         this.nums = nums;
-        for(int i=1; i<nums.length; i++) {
+        for(int i = 1; i < nums.length; i++) {
             nums[i] += nums[i-1];
         }
     }
@@ -12,8 +11,7 @@ class NumArray {
         if(left == 0) {
             return nums[right];
         }
-
-        return nums[right] - nums[left-1];
+        return nums[right] - nums[left - 1];
     }
 }
 
