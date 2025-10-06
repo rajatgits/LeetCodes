@@ -11,8 +11,8 @@ class Solution {
             hash[t.charAt(i) - 'a']--;
         }
 
-        for(int val : hash) {
-            if(val != 0) {
+        for(int num : hash) {
+            if(num != 0) {
                 return false;
             }
         }
