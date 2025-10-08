@@ -6,21 +6,20 @@ class Solution {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
 
         for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            minHeap.offer(entry);
-            if(minHeap.size() > k) {
-                minHeap.poll();
+            pq.add(entry);
+            if(pq.size() > k) {
+                pq.poll();
             }
         }
 
-        int[] arr = new int[k];
+        int[] ans = new int[k];
         int i = 0;
-
-        while(!minHeap.isEmpty()) {
-            arr[i++] = minHeap.poll().getKey();
+        while(!pq.isEmpty()) {
+            ans[i++] = pq.poll().getKey();
         }
-        return arr;
+        return ans;
     }
 }
