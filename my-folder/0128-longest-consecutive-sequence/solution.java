@@ -6,16 +6,17 @@ class Solution {
             set.add(num);
         }
 
-        int maxLen = 0;
-        for(int val : set) {
-            if(!set.contains(val - 1)) {
-                int len = 0;
-                while(set.contains(val + len)) {
-                    len++;
+        int maxLength = 0;
+
+        for(int num : set) {
+            if(!set.contains(num - 1)) {
+                int count = 1;
+                while(set.contains(num + count)) {
+                    count++;
                 }
-                maxLen = Math.max(maxLen, len);
+                maxLength = Math.max(maxLength, count);
             }
         }
-        return maxLen;
+        return maxLength;
     }
 }
