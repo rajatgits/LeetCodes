@@ -12,7 +12,7 @@ class Solution {
             if(count > k) {
                 if(nums[left] == 0) {
                     count--;
-                }  
+                }
                 left++;
             }
 
