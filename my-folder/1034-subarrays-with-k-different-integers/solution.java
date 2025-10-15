@@ -1,27 +1,26 @@
 class Solution {
     public int subarraysWithKDistinct(int[] nums, int k) {
-        return subarray(nums, k) - subarray(nums, k-1);
+        return subarray(nums, k) - subarray(nums, k - 1);
     }
 
-    int subarray(int[] nums, int k) {
-        int l = 0;
-        int r = 0;
+    private int subarray(int[] nums, int k) {
+        int left = 0;
         int count = 0;
-    
-        Map<Integer, Integer> map = new HashMap<>();
 
-        while(r < nums.length) {
-            map.put(nums[r], map.getOrDefault(nums[r], 0) + 1);
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int right = 0; right < nums.length; right++) {
+            map.put(nums[right], map.getOrDefault(nums[right], 0) + 1);
 
             while(map.size() > k) {
-                map.put(nums[l], map.get(nums[l]) - 1);
-                if(map.get(nums[l]) == 0) {
-                    map.remove(nums[l]);
+                map.put(nums[left], map.get(nums[left]) - 1);
+                if(map.get(nums[left]) == 0) {
+                    map.remove(nums[left]);
                 }
-                l += 1;
+                left++;
             }
-            count += (r-l+1);
-            r += 1;
+
+            count += (right - left + 1);
         }
         return count;
     }
