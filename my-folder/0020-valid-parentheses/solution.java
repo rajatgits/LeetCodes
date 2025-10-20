@@ -1,20 +1,21 @@
 class Solution {
     public boolean isValid(String s) {
-        if(s.length() % 2 != 0) {
-            return false;
-        }
-
         Stack<Character> stack = new Stack<>();
+        Map<Character, Character> map = new HashMap<>();
+
+        map.put(')','(');
+        map.put('}','{');
+        map.put(']','[');
 
         for(char c : s.toCharArray()) {
-            if(c == '(') {
-                stack.push(')');
-            } else if(c == '{') {
-                stack.push('}');
-            } else if(c == '[') {
-                stack.push(']');
-            } else if(stack.isEmpty() || stack.pop() != c) {
-                return false;
+            if(map.containsKey(c)) {
+                if(!stack.isEmpty() && stack.peek() == map.get(c)) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else {
+                stack.push(c);
             }
         }
         return stack.isEmpty();
