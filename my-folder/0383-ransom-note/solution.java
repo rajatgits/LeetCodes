@@ -1,7 +1,10 @@
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        int[] hash = new int[26];
+        if(ransomNote.length() > magazine.length()) {
+            return false;
+        }
 
+        int[] hash = new int[26];
         for(int i = 0; i < magazine.length(); i++) {
             hash[magazine.charAt(i) - 'a']++;
         }
@@ -14,4 +17,4 @@ class Solution {
         }
         return true;
     }
-}
+} 
