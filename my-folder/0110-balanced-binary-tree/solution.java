@@ -23,18 +23,20 @@ class Solution {
             return 0;
         }
 
-        if(height(root.left) == -1) {
+        int leftHeight = height(root.left);
+        if(leftHeight == -1) {
             return -1;
         }
 
-        if(height(root.right) == -1) {
+        int rightHeight = height(root.right);
+        if(rightHeight == -1) {
             return -1;
         }
 
-        if(Math.abs(height(root.left) - height(root.right)) > 1) {
+        if(Math.abs(leftHeight - rightHeight) > 1) {
             return -1;
-        }
+        } 
 
-        return 1 + Math.max(height(root.left), height(root.right));
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 }
