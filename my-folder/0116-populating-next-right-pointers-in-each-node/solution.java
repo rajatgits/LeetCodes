@@ -27,18 +27,17 @@ class Solution {
             return null;
         }
 
-        Node leftMost = root;
-
-        while(leftMost.left != null) {
-            Node curr = leftMost;
-            while(curr != null) {
-                curr.left.next = curr.right;
-                if(curr.next != null) {
-                    curr.right.next = curr.next.left;
+        Node leftMostNode = root;
+        while(leftMostNode.left != null) {
+            Node currNode = leftMostNode;
+            while(currNode != null) {
+                currNode.left.next = currNode.right;
+                if(currNode.next != null) {
+                    currNode.right.next = currNode.next.left;
                 }
-                curr = curr.next;
+                currNode = currNode.next;
             }
-            leftMost = leftMost.left;
+            leftMostNode = leftMostNode.left;
         }
         return root;
     }
