@@ -13,27 +13,26 @@
  *     }
  * }
  */
-class Solution { 
-    TreeNode pre;
+class Solution {
+    public Integer prev = null;
     public boolean isValidBST(TreeNode root) {
+        return helper(root);
+    }
+
+    private boolean helper(TreeNode root) {
         if(root == null) {
             return true;
         }
 
-        if(!isValidBST(root.left)) {
+        if(!helper(root.left)) {
             return false;
         }
 
-        if(pre != null && pre.val >= root.val) {
+        if(prev != null && prev >= root.val) {
             return false;
         }
+        prev = root.val;
 
-        pre = root;
-
-        if(!isValidBST(root.right)) {
-            return false;
-        }
-
-        return true;
+        return helper(root.right);
     }
-}
+} 
