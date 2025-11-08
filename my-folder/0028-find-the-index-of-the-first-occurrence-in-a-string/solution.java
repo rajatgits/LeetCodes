@@ -1,9 +1,9 @@
 class Solution {
     public int strStr(String haystack, String needle) {
-        if(needle.length() > haystack.length()) {
+        if(haystack.length() >= needle.length()) {
+            return haystack.indexOf(needle);
+        } else {
             return -1;
         }
-
-        return haystack.indexOf(needle);
     }
 }
