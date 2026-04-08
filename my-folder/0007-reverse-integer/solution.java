@@ -1,16 +1,20 @@
 class Solution {
     public int reverse(int x) {
-        int ans = 0;
-
-        while(x != 0) {
-            int rem = x % 10;
-            int num = ans * 10 + rem;
-            if((num - rem) / 10 !=  ans) {
+        boolean isNegative = x < 0;
+        int newNumber = Math.abs(x);
+        int rev = 0;
+        while(newNumber > 0) {
+            int rem = newNumber % 10;
+            if(rev > (Integer.MAX_VALUE - rem) / 10 && newNumber > 0)  {
                 return 0;
             }
-            ans = num;
-            x /= 10;
+
+            if(rev < (Integer.MIN_VALUE - rem) / 10 && newNumber < 0)  {
+                return 0;
+            }
+            rev = rev * 10 + rem;
+            newNumber /= 10;
         }
-        return ans;
+        return isNegative ? -rev : rev;
     }
 }
