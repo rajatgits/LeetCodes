@@ -4,14 +4,13 @@ class Solution {
             return false;
         }
 
-        int num = x;
+        int duplicate = x;
         int rev = 0;
-        while(num > 0) {
-            int rem = num % 10;
+        while(duplicate != 0) {
+            int rem = duplicate % 10;
             rev = rev * 10 + rem;
-            num /= 10;
+            duplicate /= 10;
         }
-
         return rev == x;
     }
 }
