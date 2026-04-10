@@ -6,7 +6,7 @@ class Solution {
             set.add(num);
         }
 
-        int maxLength = 0;
+        int maxLen = 0;
 
         for(int num : set) {
             if(!set.contains(num - 1)) {
@@ -14,9 +14,9 @@ class Solution {
                 while(set.contains(num + count)) {
                     count++;
                 }
-                maxLength = Math.max(maxLength, count);
+                maxLen = Math.max(maxLen, count);
             }
         }
-        return maxLength;
+        return maxLen;
     }
 }
