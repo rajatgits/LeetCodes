@@ -4,7 +4,7 @@ class Solution {
 
         for(int i = nums.length - 2; i >= 0; i--) {
             if(nums[i] < nums[i + 1]) {
-                index = i;
+                index  = i;
                 break;
             }
         }
@@ -14,20 +14,15 @@ class Solution {
             return;
         }
 
-        for(int i = nums.length - 1; i >= index; i--) {
-            if(nums[i] > nums[index]) {
-                swap(nums, i, index);
+        for(int j = nums.length - 1; j >= 0; j--) {
+            if(nums[j] > nums[index]) {
+                int temp = nums[j];
+                nums[j] = nums[index];
+                nums[index] = temp;
                 break;
             }
         }
-
         reverse(nums, index + 1, nums.length - 1);
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 
     private void reverse(int[] nums, int left, int right) {
