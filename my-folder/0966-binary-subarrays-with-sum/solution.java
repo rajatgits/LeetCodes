@@ -1,16 +1,18 @@
 class Solution {
     public int numSubarraysWithSum(int[] nums, int goal) {
-        return numSubarray(nums, goal) - numSubarray(nums, goal - 1);
+        return sumSubarray(nums, goal) - sumSubarray(nums, goal - 1);
     }
 
-    private int numSubarray(int[] nums, int goal) {
+    private int sumSubarray(int[] nums, int k) {
+        if(k < 0) {
+            return 0;
+        }
         int left = 0;
         int sum = 0;
         int count = 0;
-
         for(int right = 0; right < nums.length; right++) {
             sum += nums[right];
-            while(sum > goal && left <= right) {
+            while(sum > k) {
                 sum -= nums[left];
                 left++;
             }
