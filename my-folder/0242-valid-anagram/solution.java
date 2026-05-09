@@ -5,7 +5,6 @@ class Solution {
         }
 
         int[] hash = new int[26];
-
         for(int i = 0; i < s.length(); i++) {
             hash[s.charAt(i) - 'a']++;
             hash[t.charAt(i) - 'a']--;
