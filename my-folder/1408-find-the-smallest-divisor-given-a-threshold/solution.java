@@ -1,28 +1,32 @@
 class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
-        int left = 1;
-        int right = 0;
+        int max = Integer.MIN_VALUE;
 
         for(int num : nums) {
-            right = Math.max(right, num);
+            max = Math.max(max, num);
         }
 
-        while(left <= right) {
-            int mid = left+(right-left)/2;
-            if(sumDivisor(nums, mid) > threshold) {
-                left = mid+1;
+        int low = 1;
+        int high = max;
+
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+
+            if(result(nums, mid) <= threshold) {
+                high = mid - 1;
             } else {
-                right = mid-1;
+                low = mid + 1;
             }
         }
-        return left;
+        return low;
     }
 
-    private int sumDivisor(int[] nums, int mid) {
-        int sum = 0;
-        for(int num : nums) {
-            sum += Math.ceil((double)num/(double)mid);
+    private int result(int[] nums, int mid) {
+        int total = 0;
+
+        for(int i = 0; i < nums.length; i++) {
+            total += Math.ceil((double)nums[i]/mid);
         }
-        return sum;
+        return total;
     }
 }
